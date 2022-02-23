@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+img {
+    height: 300px;
+    width: 500px;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="column">
+    <a href="/meteo">
+        <img src="static/previsioni del tempo.jpg" alt="previsioni del tempo">
+    </a>
+  </div>
+  <div class="column">
+    <img src="static/libro.jpg" alt="libro">
+  </div>
+  <div class="column">
+    <img src="static/calendario.png" alt="calendario">
+  </div>
+</div>
+
+</body>
+</html>
