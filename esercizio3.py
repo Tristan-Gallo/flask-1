@@ -2,3 +2,20 @@
 # di 10 frasi (per ispirazione  https://www.frasimania.it/frasi-corte/). Utilizzare una struttura dati adatta per contenere le frasi e gli autori Il sito deve visualizzare la 
 # frase con una certa grafica (a scelta) e anche l'autore (da visualizzare con una grafica diversa). Utilizzare un file css per definire la grafica della pagina.La route per 
 # accedere al serizio deve essere /frasicelebri
+from flask import Flask, render_template
+app = Flask(__name__)
+
+import random
+
+@app.route('/', methods=['GET'])
+def home():
+    return render_template('indexcss.html')
+
+@app.route('/frasicelebri', methods=['GET'])
+def frasi():
+    
+
+
+
+if __name__ == '__main__':
+  app.run(host='0.0.0.0', port=3245, debug=True)

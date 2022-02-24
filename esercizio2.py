@@ -7,15 +7,19 @@ app = Flask(__name__)
 
 import random
 
+@app.route('/', methods=['GET'])
+def home():
+    return render_template('indexcss.html')
+
 @app.route('/meteo', methods=['GET'])
 def meteo():
     n = random.randint(0,8)
     if n < 2:
-        return render_template('previsioni.html', testo= 'PIOGGIA')
+        return render_template('previsioni.html', testo= 'PIOGGIA', img = "static/img/pioggia.png")
     elif 3 <= n <= 5:
-        return render_template('previsioni.html', testo= 'NUVOLOSO')
+        return render_template('previsioni.html', testo= 'NUVOLOSO', img = "static/img/nuvoloso.jpg")
     else:
-        return render_template('previsioni.html', testo= 'SOLE')
+        return render_template('previsioni.html', testo= 'SOLE', img = "static/img/sole.png")
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=3245, debug=True)
