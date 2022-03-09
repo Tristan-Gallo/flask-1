@@ -27,19 +27,29 @@ def data():
       lista.append(utente)
       print(lista)
       if sesso == 'M':
-          saluto = 'Benvenuto!'
+          saluto = 'Benvenuto'
       elif sesso == 'F':
-          saluto = 'Benvenuta!'
+          saluto = 'Benvenuta'
       else:
-          saluto = 'Benvenut*!'
-      return render_template('welcome.html', benvenuto = saluto)
+          saluto = 'Benvenut*'
+      return render_template('login.html', benvenuto = saluto)
   else:
-      return '<h1>Errore</h1>'
+      return render_template('errore.html')
 
 @app.route('/login', methods=['GET'])
 def login():
-    return render_template('login.html')
-
+    username_log = request.args['Username']
+    password_log = request.args['Password']
+    for utent in lista:
+        if utent['Username'] == username_log and utent['Password'] == password_log:
+            if utent['Sex'] == 'M':
+                saluto = 'Benvenuto'
+            elif utent['Sex'] == 'F':
+                saluto = 'Benvenuta'
+            else:
+                saluto = 'Benvenut*'
+            return render_template('welcome.html', benvenuto = saluto, nome_user = username_log)
+    return render_template('errore.html')
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=3245, debug=True)
