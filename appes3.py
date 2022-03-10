@@ -37,7 +37,7 @@ def capoluoghi():
     for key, value in capoluoghiRegione.items():
         if capoluogo == value:
             regione = key
-            return render_template('risultatoes3.html', risposta = regione)
+            return render_template('capoluogoes3.html', risposta = regione)
     return render_template('errorecapoluogo.html')
 
 
