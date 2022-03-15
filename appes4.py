@@ -10,7 +10,8 @@ df = pd.read_csv('https://raw.githubusercontent.com/italia/covid19-opendata-vacc
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('formes4.html')
+    reg = df['nome_area'].drop_duplicates().to_list()
+    return render_template('formes4.html', reg=reg)
 
 @app.route('/data', methods=['GET'])
 def data():
