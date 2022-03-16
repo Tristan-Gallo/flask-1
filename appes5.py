@@ -21,7 +21,7 @@ def ricerca():
 
 @app.route("/inseriscidati", methods=["GET"])
 def inseriscidati():
-    squadra = request.args["Nome"]
+    squadra = request.args["Squadra"]
     anno = request.args["Anno"]
     citta = request.args["Citta"]
     df = pd.read_csv("/workspace/flask/templates/datisquadre.csv")
@@ -35,8 +35,13 @@ def ricercadati():
     scelta = request.args['Scelta']
     ricerca = request.args['Ricerca']
     df = pd.read_csv('/workspace/flask/templates/datisquadre.csv')
-    
-
+    if scelta == 'Squadra':
+        info = df[df['Squadra'] == ricerca]
+    elif scelta == 'Anno':
+        info = df[df['Anno'] == ricerca]
+    else:
+        info = df[df['Citta'] == ricerca]
+    return info.to_html()
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=3245, debug=True)
