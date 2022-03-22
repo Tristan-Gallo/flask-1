@@ -8,13 +8,13 @@ import geopandas as gpd
 import contextily as ctx
 import matplotlib.pyplot as plt 
 
-quartieri = gpd.read_file('/workspace/flask/NIL_WM.zip')
+quartieri = gpd.read_file('/workspace/flask/NIL_WM.dbf')
 
 @app.route('/', methods=['GET'])
 def home():
     return render_template('homepage.html')
 
-@app.route('/quartieri', method=['GET'])
+@app.route('/quartieri', methods=['GET'])
 def quartieri():
     fig, ax = plt.subplots(figsize = (12,8))
     quartieri.to_crs(epsg=3857).plot(ax=ax, alpha=0.5)
